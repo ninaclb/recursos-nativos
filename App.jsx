@@ -1,5 +1,5 @@
 import { StyleSheet, View } from 'react-native';
-import Deviceinfo from './screens/DeviceInfo';
+import BatteryInfo from './screens/BatteryInfo';
 
 const styles = StyleSheet.create({
   container: {
@@ -13,7 +13,8 @@ const styles = StyleSheet.create({
 export default function App() {
   return (
     <View style={styles.container}>
-      <Deviceinfo />
+      {/*<Deviceinfo />*/}
+      <BatteryInfo/>
     </View>
   );
 }

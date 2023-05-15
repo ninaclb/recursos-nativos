@@ -1,69 +1,46 @@
-import { Text, View, StyleSheet } from "react-native";
-import * as Device from "expo-device";
+import { StyleSheet, Text, View } from "react-native";
+
+// import DeviceInfo from "react-native-device-info";
 
 const styles = StyleSheet.create({
-  titulo: {
-    fontSize: 30,
-    backgroundColor: "#606",
-    padding: 10,
-    margin: 10,
-    color: "white",
-    alignContent: "center",
-    textAlign: "center",
-    marginTop: 200,
-    fontWeight: "bold",
+  container: {
+    flex: 1,
+    gap: 10,
   },
-  text: {
-    fontSize: 20,
+
+  content: {
+    flex: 1,
+    gap: 20,
+    padding: 20,//
+    alignSelf: "center",
+  },
+
+  contentTextStyle: {
+    padding: 5,
+    textAlignVertical: "center",
+    minHeight: 50,
     backgroundColor: "#969",
-    padding: 10,
-    margin: 10,
     color: "white",
-    alignContent: "center",
+    fontWeight: "bold",
+    fontSize: 18,
     textAlign: "center",
+  },
+
+  footer: {
+    backgroundColor: "#888",
+    paddingHorizontal: 25,
+    padding: 20,
   },
 });
 
-export default function Deviceinfo() {
+export default function Exemplo() {
   return (
-    <View>
-      <Text style={styles.titulo}>informações do aparelho</Text>
-      <Text style={styles.text}>
-        O seu dispositivo é:
-        {Device.deviceName}
-      </Text>
-      <Text style={styles.text}>
-        Marca do aparelho é:
-        {Device.brand}
-      </Text>
-      <Text style={styles.text}>
-        O modelo do aparelho é:
-        {Device.modelName}
-      </Text>
-      <Text style={styles.text}>
-        O nome completo do aparelho é:
-        {Device.modelName}
-      </Text>
-      <Text style={styles.text}>
-        O design do aparelho é:
-        {Device.designName}
-      </Text>
-      <Text style={styles.text}>
-        Ano do lançamento é:
-        {Device.deviceYearClass}
-      </Text>
-      <Text style={styles.text}>
-        A memoria do aparelho é:
-        {Device.totalMemory}
-      </Text>
-      <Text style={styles.text}>
-        A versão do sistema é a:
-        {Device.osVersion}
-      </Text>
-      <Text style={styles.text}>
-        A arquitetura do aparelho é:
-        {Device.osBuildId}
-      </Text>
+    <View style={styles.container}>
+      <Header title={"informações da bateria"} />
+      <View style={styles.body}>
+        <Text>O seu dispositivo é: {Device.deviceName}</Text>{" "}
+      </View>
+      <Footer />{" "}
     </View>
   );
 }
