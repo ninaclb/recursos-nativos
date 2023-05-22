@@ -1,6 +1,8 @@
+//Anotação de outa aula
 import { StyleSheet, Text, View } from "react-native";
 
 // import DeviceInfo from "react-native-device-info";
+
 
 const styles = StyleSheet.create({
   container: {

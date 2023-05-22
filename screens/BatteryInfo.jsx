@@ -9,14 +9,21 @@ const styles = StyleSheet.create({
     flex: 1,
     gap: 10,
   },
+  bateria: {
+    flex: 1,
+    gap: 20,
+    padding: 20,
+    alignSelf: "center",
+    justifyContent: "center",
+  },
 });
 
-export default function BatteryInfo() {
+export default function BatteryInfo({ navigation }) {
   const [nivelBateria, setNivelBateria] = useState(0);
 
   async function atualizarTudo() {
     bateria();
-    }
+  }
 
   async function bateria() {
     const nivel = await Battery.getBatteryLevelAsync();
@@ -25,13 +32,15 @@ export default function BatteryInfo() {
 
   useEffect(() => {
     bateria();
-  }, []);
+  }, [nivelBateria]);
 
   return (
     <View style={styles.container}>
-      <Header title={"Bateria"} />
-      <Text>{nivelBateria} %</Text>
-      <Button title="Atualizar" onPress={atualizarTudo} />
+      <View style={styles.bateria}>
+        <Header title={"Bateria"} />
+        <Text>{nivelBateria} %</Text>
+        <Button title="Atualizar" onPress={atualizarTudo} />
+      </View>
       <Footer />
     </View>
   );

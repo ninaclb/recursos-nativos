@@ -5,27 +5,31 @@ import Header from "../components/Header";
 const styles = StyleSheet.create({
   titulo: {
     fontSize: 30,
+    fontWeight: "bold",
+    textAlign: "center",
     backgroundColor: "#606",
+    marginTop: 20,
+    marginBottom: 20,
     padding: 10,
-    margin: 10,
     color: "white",
     alignContent: "center",
-    textAlign: "center",
     marginTop: 200,
-    fontWeight: "bold",
+    
   },
   text: {
     fontSize: 20,
+    textAlign: "center",
+    marginTop: 20,
+    marginBottom: 20,
     backgroundColor: "#969",
     padding: 10,
     margin: 10,
     color: "white",
-    alignContent: "center",
-    textAlign: "center",
+    
   },
 });
 
-export default function Deviceinfo() {
+export default function Deviceinfo({navigation}) {
   return (
     <View>
       <Header title={"informações do aparelho"} />
