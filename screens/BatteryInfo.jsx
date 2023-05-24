@@ -36,8 +36,9 @@ export default function BatteryInfo({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <View style={styles.bateria}>
+      
         <Header title={"Bateria"} />
+        <View style={styles.bateria}>
         <Text>{nivelBateria} %</Text>
         <Button title="Atualizar" onPress={atualizarTudo} />
       </View>

@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: "bold",
     textAlign: "center",
-    backgroundColor: "#606",
+    backgroundColor: "#B0E0E6",
     marginTop: 20,
     marginBottom: 20,
     padding: 10,
@@ -21,10 +21,10 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginTop: 20,
     marginBottom: 20,
-    backgroundColor: "#969",
+    backgroundColor: "#B0E0E6",
     padding: 10,
     margin: 10,
-    color: "white",
+    color: "#6750A4",
     
   },
 });
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
 export default function Deviceinfo({navigation}) {
   return (
     <View>
-      <Header title={"informações do aparelho"} />
+      <Header title={"informações do aparelho"} style={styles.titulo}/>
       <Text style={styles.text}>
         O seu dispositivo é:
         {Device.deviceName}
