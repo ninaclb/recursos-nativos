@@ -59,7 +59,7 @@ useEffect(() => {
 
   return (
     <View style={styles.container}>
-      <Header title={"nivel da bateria"} style={styles.titulo}/>
+      <Header title={"Nivel da bateria"} style={styles.titulo}/>
     <View style={styles.bateria}>
       <Text style={{backgroundColor: backgroundColor}}>{batteryLevel}</Text>
       <Button title="Atualizar" onPress={atualizarTudo} />

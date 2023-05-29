@@ -4,6 +4,7 @@ import HomeAula from "./HomeAula";
 import BatteryInfo from "./BatteryInfo";
 import DeviceAula from "./DeviceAula";
 import NivelAula from "./NivelAula";
+import MyScreenOrietation from "./MyScreenOrietation";
 
 const Stack = createNativeStackNavigator();
 
@@ -15,6 +16,7 @@ export default function RootNavigation() {
         <Stack.Screen name="BatteryInfo" component={BatteryInfo} />
         <Stack.Screen name="DeviceAula" component={DeviceAula} />
         <Stack.Screen name="NivelAula" component={NivelAula} />
+        <Stack.Screen name="MyScreenOrietation" component={MyScreenOrietation} />
 
       </Stack.Navigator>
     </NavigationContainer>

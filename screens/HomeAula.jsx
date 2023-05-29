@@ -53,6 +53,12 @@ export default function HomeAula({ navigation }) {
       >
         Nivel da bateria Cor
       </Button>
+      <Button
+        style={styles.botao}
+        onPress={() => navigation.navigate("MyScreenOrietation")}
+      >
+        Orientação de tela
+      </Button>
     </View>
   );
 }
