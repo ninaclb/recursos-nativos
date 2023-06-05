@@ -59,6 +59,12 @@ export default function HomeAula({ navigation }) {
       >
         Orientação de tela
       </Button>
+      <Button
+        style={styles.botao}
+        onPress={() => navigation.navigate("Notify")}
+      >
+        Notificações
+      </Button>
     </View>
   );
 }

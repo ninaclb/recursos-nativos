@@ -1,6 +1,5 @@
-import { Button, StyleSheet, View } from "react-native";
+import { Button, ScrollView, StyleSheet, View } from "react-native";
 import * as ScreenOrientation from "expo-screen-orientation";
-import * as Device from "expo-device";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 
@@ -60,17 +59,16 @@ async function direita() {
       ScreenOrientation.OrientationLock.LANDSCAPE_LEFT
     );
   }
-  async function informar() {
-    await ScreenOrientation.lockAsync(
-      ScreenOrientation.OrientationLock.OTHER
-    );
+  async function informar() {//nao sei fazer funcionar
+    await ScreenOrientation.getOrientationAsync();
   }
+  console.log(ScreenOrientation.getOrientationAsync());
 
 export default function MyScreenOrientation() {
   return (
     <View style={styles.container}>
       <Header style={styles.titulo} title={"Orientação da tela"} />
-
+      <ScrollView>
       <View style={styles.botao}>
         <Button title="Default" onPress={padrao} />
         <Button title="direita" onPress={direita} />
@@ -79,8 +77,8 @@ export default function MyScreenOrientation() {
         <Button title="inverter" onPress={inverter} />
         <Button title="normal_2" onPress={normal2} />
         <Button title="informar" onPress={informar} />
-
-        </View>
+      </View>
+      </ScrollView>
       <Footer onPress={() => navigation.back()} />
     </View>
   );
