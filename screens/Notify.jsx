@@ -92,6 +92,7 @@ export default function Notify({ navigation }) {
     setExpoToken(token);
   }
 
+
   const ultimaNotificacao = Notifications.useLastNotificationResponse();
   async function exibirAlerta() {
     const idToken = ultimaNotificacao.notification.request.identifier;
