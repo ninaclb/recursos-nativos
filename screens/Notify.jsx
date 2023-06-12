@@ -45,6 +45,7 @@ const styles = StyleSheet.create({
 export default function Notify({ navigation }) {
   const [expoToken, setExpoToken] = useState("");
   const [nivelBateria, setNivelBateria] = useState();
+  const [ultimaNotif, setUltimaNotif] = useState();
 
   async function notificarExpo() {
     const token = await Notifications.scheduleNotificationAsync({
@@ -91,6 +92,40 @@ export default function Notify({ navigation }) {
     setExpoToken(token);
   }
 
+  const ultimaNotificacao = Notifications.useLastNotificationResponse();
+  async function exibirAlerta() {
+    const idToken = ultimaNotificacao.notification.request.identifier;
+    alert('Atenção! ' + idToken)
+    console.log(idToken);
+  }
+  
+  useEffect(() => {
+    if (ultimaNotificacao){
+      setUltimaNotif(ultimaNotificacao.notification.request.identifier);
+    };
+    exibirAlerta();
+  }, [ultimaNotificacao]);
+
+  async function lerNotificacao() {
+    const ultimaNotificacao = await Notifications.getLastNotificationResponseAsync();
+    alert(ultimaNotificacao.notification.request.identifier);
+    console.log(ultimaNotificacao);
+  }
+  
+  async function mudarPagina() {
+    const idToken = ultimaNotif;
+    alert('Atenção! ' + idToken)
+    console.log(idToken);
+    if (idToken == expoToken) {
+      navigation.navigate("HomeAula");
+    }
+  }
+  
+  useEffect(() => {
+    mudarPagina();
+  }, [ultimaNotificacao]);
+
+
   return (
     <View style={styles.container}>
       <Header title={"Notificação"} style={styles.titulo} />
@@ -108,6 +143,13 @@ export default function Notify({ navigation }) {
           title="Enviar Notificação do Nome"
           onPress={async () => notificarNome()}
         />
+        <Button 
+        title="Enviar ultima notificação lida" 
+        onPress={async () => lerNotificacao()}/>
+        <Button
+         title="notificar e ir para outra página"
+         onPress={async () => mudarPagina()}/>
+        
 
         {/* <Button title="Ler a ultima notificação clicada" /> */
         /* <Button title="Ler a notificação não clicada" /> */}
