@@ -65,6 +65,12 @@ export default function HomeAula({ navigation }) {
       >
         Notificações
       </Button>
+      <Button
+        style={styles.botao}
+        onPress={() => navigation.navigate("ContactsInfo")}
+      >
+        ContactsInfo
+      </Button>
     </View>
   );
 }
