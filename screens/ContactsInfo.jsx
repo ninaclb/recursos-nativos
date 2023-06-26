@@ -1,9 +1,11 @@
-import { View, StyleSheet} from "react-native";
+import { View, StyleSheet, FlatList, TextInput, Text } from "react-native";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import * as Contacts from "expo-contacts";
-import { FlatList } from "react-native-web";
+import * as Notification from "expo-notifications";
+import Items from "../components/Items";
+import { useFocusEffect } from "@react-navigation/native";
 
 const styles = StyleSheet.create({
   container: {
@@ -39,56 +41,82 @@ const styles = StyleSheet.create({
     gap: 10,
     alignContent: "center",
   },
+  searchInput: {
+    height: 40,
+    borderColor: "gray",
+    borderWidth: 1,
+    paddingHorizontal: 10,
+    marginBottom: 10,
+  },
 });
 
 export default function ContactsInfo({ navigation }) {
-  const [contacts, setContacts] = useState([]);
+  const [contacts, setContacts] = useState();
+  const [filteredContacts, setFilteredContacts] = useState([]);
+  const [searchText, setSearchText] = useState("");
+
 
   async function carregarContatos() {
     const { data } = await Contacts.getContactsAsync({
-      fields: [
-        Contacts.Fields.Emails,
-        Contacts.Fields.PhoneNumbers],
-    })
+      fields: [Contacts.Fields.Emails, Contacts.Fields.PhoneNumbers],
+    });
     setContacts(data);
-    console.log(contacts);
+    setFilteredContacts(data);
   }
 
+  const filterContacts = (text) => {
+    setSearchText(text);
+    const filtered = contacts.filter((contact) =>
+      contact.name.toLowerCase().includes(text.toLowerCase())
+    );
+    setFilteredContacts(filtered);
+  };
 
+  async function notiMensagem() {
+    const token = await Notification.scheduleNotificationAsync({
+      content: {
+        title: "Nome do contato",
+        subtitle: "Numero do contato",
+        body: "...",
+      },
+      trigger: { seconds: 3 },
+    });
+  }
 
-  useEffect((
+  useFocusEffect(
     useCallback(() => {
       (async () => {
         const { status } = await Contacts.requestPermissionsAsync();
         if (status === "granted") {
-          carregarContatos();
+          await carregarContatos();
         }
       })();
-    })
-  ), []);
+    }, [])
+  );
 
-
- 
   return (
     <View style={styles.container}>
       <Header title={"Contatos"} style={styles.titulo} />
-      <View>{
-        contacts
-        ? <FlatList
-        style={{flex: 1, gap: 10}}
-        data={contacts}
-        KeyExtractor={(item) => item.id.toString()}
-        renderItem={({item}) => {
-          <Items 
-            item={item}
-          />
-        }}
+      <View style={styles.container}>
+        <TextInput
+          style={styles.searchInput}
+          placeholder="Filtrar por nome"
+          value={searchText}
+          onChangeText={filterContacts}
         />
-        :<></>
-      }
-        
-
-        
+        <View style={styles.container}>
+          {filteredContacts.length > 0 ? (
+            <FlatList
+              style={{ flex: 1, gap: 10 }}
+              data={filteredContacts}
+              keyExtractor={(item) => item.id.toString()}
+              renderItem={({ item }) => 
+              <Items item={item} notiMensagem={notiMensagem}/>}//ele fala que a função nao existe sendo que era apenas ele puxar a função de outro arquivo
+            />
+          ) : (
+            <Text>Nenhum contato listado ... </Text>
+          )}
+        </View>
       </View>
       <Footer onPress={() => navigation.back()} />
     </View>
