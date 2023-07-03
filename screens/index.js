@@ -7,6 +7,8 @@ import NivelAula from "./NivelAula";
 import MyScreenOrietation from "./MyScreenOrietation";
 import Notify from "./Notify";
 import ContactsInfo from "./ContactsInfo";
+import { setAutoServerRegistrationEnabledAsync } from "expo-notifications";
+import Agenda from "./Agenda";
 
 const Stack = createNativeStackNavigator();
 
@@ -21,6 +23,7 @@ export default function RootNavigation() {
         <Stack.Screen name="MyScreenOrietation" component={MyScreenOrietation} />
         <Stack.Screen name="Notify" component={Notify} />
         <Stack.Screen name="ContactsInfo" component={ContactsInfo} />
+        <Stack.Screen name="Agenda" component={Agenda} />
 
 
       </Stack.Navigator>

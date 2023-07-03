@@ -1,5 +1,7 @@
 import { StyleSheet, View } from "react-native";
 import { Text, Button } from "react-native-paper";
+import * as Battery from 'expo-battery';
+
 
 const styles = StyleSheet.create({
   container: {
@@ -31,7 +33,9 @@ const styles = StyleSheet.create({
   },
 });
 
+
 export default function HomeAula({ navigation }) {
+  
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Bem vindo ao sistema de navegação</Text>
@@ -70,6 +74,12 @@ export default function HomeAula({ navigation }) {
         onPress={() => navigation.navigate("ContactsInfo")}
       >
         ContactsInfo
+      </Button>
+      <Button
+        style={styles.botao}
+        onPress={() => navigation.navigate("Agenda")}
+      >
+        Agendar
       </Button>
     </View>
   );

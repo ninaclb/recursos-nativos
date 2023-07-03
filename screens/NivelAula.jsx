@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     gap: 10,
+
   },
   titulo: {
     fontSize: 30,
@@ -28,6 +29,8 @@ const styles = StyleSheet.create({
     padding: 20,
     alignSelf: "center",
     justifyContent: "center",
+    
+    
   },
 });
 
@@ -35,36 +38,38 @@ export default function BatteryScreen({ navigation }) {
   const [batteryLevel, setBatteryLevel] = useState(100);
   const [backgroundColor, setBackgroundColor] = useState('green');
 
-    async function atualizarTudo() {
-        bateria();
-    async function bateria() {
-        const level = await Battery.getBatteryLevelAsync();// Função para obter o nível da bateria
-        setBatteryLevel(level * 100);
-        if (batteryLevel >= 80) {
-          setBackgroundColor('green');
-        } else if (batteryLevel >= 50) {
-          setBackgroundColor('yellow');
-        } else if (batteryLevel >= 30) {
-          setBackgroundColor('orange');
-        } else {
-          setBackgroundColor('red');
-        }
-    };
-}
+  async function atualizarTudo() {
+    bateria();
+  }
 
-useEffect(() => {
+  async function bateria() {
+    const level = await Battery.getBatteryLevelAsync();
+    setBatteryLevel(level * 100);
+    if (level >= 0.8) {
+      setBackgroundColor('green');
+    } else if (level >= 0.5) {
+      setBackgroundColor('yellow');
+    } else if (level >= 0.3) {
+      setBackgroundColor('orange');
+    } else {
+      setBackgroundColor('red');
+    }
+  }
+
+  useEffect(() => {
     atualizarTudo();
-  }, [batteryLevel]);
-
+  }, []);
 
   return (
+    <View style={{ flex: 1, backgroundColor: backgroundColor }}>
     <View style={styles.container}>
-      <Header title={"Nivel da bateria"} style={styles.titulo}/>
-    <View style={styles.bateria}>
-      <Text style={{backgroundColor: backgroundColor}}>{batteryLevel}</Text>
-      <Button title="Atualizar" onPress={atualizarTudo} />
-    </View>
-    <Footer />
+      <Header title={"Nível da bateria"} style={styles.titulo}/>
+      <View style={styles.bateria}>
+        <Text>{batteryLevel}</Text>
+        <Button title="Atualizar" onPress={atualizarTudo} />
+      </View>
+      </View>
+      <Footer />
     </View>
   );
 }
