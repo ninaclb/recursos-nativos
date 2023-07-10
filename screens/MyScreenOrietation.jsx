@@ -5,8 +5,7 @@ import Header from "../components/Header";
 import { useState } from "react";
 
 const styles = StyleSheet.create({
-    container: {
-        
+    container: {   
       },
   titulo: {
     fontSize: 30,
@@ -29,13 +28,7 @@ const styles = StyleSheet.create({
 },
 });
 
-
-
-
-
-
-
-  
+ 
 export default function MyScreenOrientation() {
   const [orientation, setOrientation] = useState();
   const [backgroundColor, setBackgroundColor] = useState('red');
@@ -56,10 +49,6 @@ export default function MyScreenOrientation() {
   //     setBackgroundColor('green');
   //   }
   // }, [orientation]);
-
-
-
-
 
 
   async function padrao() {
@@ -102,12 +91,6 @@ export default function MyScreenOrientation() {
       await ScreenOrientation.getOrientationAsync();
     }
     console.log(ScreenOrientation.getOrientationAsync());
-
-
-
-
-
-
 
   return (
     <View style={{

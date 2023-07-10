@@ -1,5 +1,6 @@
 import { StyleSheet, View } from "react-native";
 import { Text, Button } from "react-native-paper";
+import { ScrollView } from "react-native";
 import * as Battery from 'expo-battery';
 
 
@@ -39,6 +40,7 @@ export default function HomeAula({ navigation }) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Bem vindo ao sistema de navegação</Text>
+      <ScrollView>
       <Button
         style={styles.botao}
         onPress={() => navigation.navigate("BatteryInfo")}
@@ -81,6 +83,13 @@ export default function HomeAula({ navigation }) {
       >
         Agendar
       </Button>
+      <Button
+        style={styles.botao}
+        onPress={() => navigation.navigate("Novo")}
+      >
+        Novo
+      </Button>
+      </ScrollView>
     </View>
   );
 }

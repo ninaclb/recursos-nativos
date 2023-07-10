@@ -9,7 +9,8 @@ import Notify from "./Notify";
 import ContactsInfo from "./ContactsInfo";
 import { setAutoServerRegistrationEnabledAsync } from "expo-notifications";
 import Agenda from "./Agenda";
-
+import novo from "./Novo";
+import Novo from "./Novo";
 const Stack = createNativeStackNavigator();
 
 export default function RootNavigation() {
@@ -24,6 +25,7 @@ export default function RootNavigation() {
         <Stack.Screen name="Notify" component={Notify} />
         <Stack.Screen name="ContactsInfo" component={ContactsInfo} />
         <Stack.Screen name="Agenda" component={Agenda} />
+        <Stack.Screen name="Novo" component={Novo} />
 
 
       </Stack.Navigator>
