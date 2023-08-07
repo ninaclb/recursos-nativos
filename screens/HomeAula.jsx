@@ -89,6 +89,12 @@ export default function HomeAula({ navigation }) {
       >
         Novo
       </Button>
+      <Button
+        style={styles.botao}
+        onPress={() => navigation.navigate("Sensors")}
+      >
+        Sensor
+      </Button>
       </ScrollView>
     </View>
   );
