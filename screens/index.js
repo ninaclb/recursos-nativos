@@ -11,6 +11,7 @@ import { setAutoServerRegistrationEnabledAsync } from "expo-notifications";
 import Agenda from "./Agenda";
 import Novo from "./Novo";
 import Sensors from "./Sensors";
+import Capture from "./Capture";
 const Stack = createNativeStackNavigator();
 
 export default function RootNavigation() {
@@ -27,8 +28,7 @@ export default function RootNavigation() {
         <Stack.Screen name="Agenda" component={Agenda} />
         <Stack.Screen name="Novo" component={Novo} />
         <Stack.Screen name="Sensors" component={Sensors} />
-
-
+        <Stack.Screen name="Capture" component={Capture} />
       </Stack.Navigator>
     </NavigationContainer>
   );

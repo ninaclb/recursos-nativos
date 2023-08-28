@@ -95,6 +95,12 @@ export default function HomeAula({ navigation }) {
       >
         Sensor
       </Button>
+      <Button
+        style={styles.botao}
+        onPress={() => navigation.navigate("Capture")}
+      >
+        Capture
+      </Button>
       </ScrollView>
     </View>
   );
