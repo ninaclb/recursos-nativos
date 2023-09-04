@@ -101,6 +101,12 @@ export default function HomeAula({ navigation }) {
       >
         Capture
       </Button>
+      <Button
+        style={styles.botao}
+        onPress={() => navigation.navigate("MyLocalAuthentication")}
+      >
+        Authentication
+      </Button>
       </ScrollView>
     </View>
   );

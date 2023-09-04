@@ -7,11 +7,11 @@ import NivelAula from "./NivelAula";
 import MyScreenOrietation from "./MyScreenOrietation";
 import Notify from "./Notify";
 import ContactsInfo from "./ContactsInfo";
-import { setAutoServerRegistrationEnabledAsync } from "expo-notifications";
 import Agenda from "./Agenda";
 import Novo from "./Novo";
 import Sensors from "./Sensors";
 import Capture from "./Capture";
+import MyLocalAuthentication from "./MyLocalAuthentication";
 const Stack = createNativeStackNavigator();
 
 export default function RootNavigation() {
@@ -29,6 +29,7 @@ export default function RootNavigation() {
         <Stack.Screen name="Novo" component={Novo} />
         <Stack.Screen name="Sensors" component={Sensors} />
         <Stack.Screen name="Capture" component={Capture} />
+        <Stack.Screen name="MyLocalAuthentication" component={MyLocalAuthentication} />
       </Stack.Navigator>
     </NavigationContainer>
   );
