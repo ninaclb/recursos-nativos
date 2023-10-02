@@ -107,6 +107,18 @@ export default function HomeAula({ navigation }) {
       >
         Authentication
       </Button>
+      <Button
+        style={styles.botao}
+        onPress={() => navigation.navigate("CameraInfo")}
+      >
+        Camera
+      </Button>
+      <Button
+        style={styles.botao}
+        onPress={() => navigation.navigate("Localization")}
+      >
+        Localization
+      </Button>
       </ScrollView>
     </View>
   );

@@ -12,6 +12,8 @@ import Novo from "./Novo";
 import Sensors from "./Sensors";
 import Capture from "./Capture";
 import MyLocalAuthentication from "./MyLocalAuthentication";
+import CameraInfo from "./CameraInfo";
+import Localization from "./Localization";
 const Stack = createNativeStackNavigator();
 
 export default function RootNavigation() {
@@ -30,6 +32,8 @@ export default function RootNavigation() {
         <Stack.Screen name="Sensors" component={Sensors} />
         <Stack.Screen name="Capture" component={Capture} />
         <Stack.Screen name="MyLocalAuthentication" component={MyLocalAuthentication} />
+        <Stack.Screen name="CameraInfo" component={CameraInfo} />
+        <Stack.Screen name="Localization" component={Localization} />
       </Stack.Navigator>
     </NavigationContainer>
   );
